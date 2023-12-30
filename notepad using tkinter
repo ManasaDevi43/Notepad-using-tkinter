@@ -1,0 +1,27 @@
+# Find More Python Projects at Codewithcurious.com
+import tkinter as tk
+from tkinter import filedialog
+
+class Notepad(tk.Tk):
+    def __init__(self, *args, **kwargs):
+        tk.Tk.__init__(self, *args, **kwargs)
+
+        # Set the title for the notepad
+        self.title("Notepad")
+
+        # Create a text widget
+        self.text = tk.Text(self, wrap="word")
+        self.text.pack(side="top", fill="both", expand=True)
+
+        # Create a menu bar
+        self.menu = tk.Menu(self)
+        self.config(menu=self.menu)
+
+        # Create a file menu
+        file_menu = tk.Menu(self.menu)
+        self.menu.add_cascade(label="File", menu=file_menu)
+        file_menu.add_command(label="New", command=self.new_file)
+        file_menu.add_command(label="Open", command=self.open_file)
+        file_menu.add_command(label="Save", command=self.save_file)
+        file_menu.add_separator()
+        file_menu.add_command(label="Exit", command=self.quit)
